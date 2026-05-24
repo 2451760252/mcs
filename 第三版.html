@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft 服务器连接指南 - dcx512.top</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #64b5f6, #1e88e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            text-align: center;
+            color: #90a4ae;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        .note {
+            background: rgba(30, 136, 229, 0.15);
+            border-left: 4px solid #1e88e5;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            color: #bbdefb;
+        }
+        .note strong {
+            color: #64b5f6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 16px;
+            text-align: left;
+        }
+        th {
+            background: rgba(255, 255, 255, 0.08);
+            color: #90a4ae;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        td {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1rem;
+            color: #e0e0e0;
+        }
+        .address {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            color: #64b5f6;
+            font-weight: bold;
+            word-break: break-all;
+        }
+        .port-required {
+            color: #ffb74d;
+            font-weight: bold;
+        }
+        .auto {
+            color: #66bb6a;
+        }
+        .footer-note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #78909c;
+            text-align: center;
+        }
+        .footer-note a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⛏️ Minecraft 连接指南</h1>
+        <p class="subtitle">QQ群:653263176</p>
+
+        <div class="note">
+            <strong>📡 网络优先级说明：</strong><br>
+            您的设备如果支持 <strong>IPv6</strong>请通过直连获得更低延迟；如果仅支持 IPv4请通过 FRP 中转服务器连接。
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>游戏版本</th>
+                    <th>网络类型</th>
+                    <th>服务器地址</th>
+                    <th>端口</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Java 版 IPv6 -->
+                <tr>
+                    <td rowspan="2" style="font-weight: bold; color: #ff8a65;">☕ Java 版</td>
+                    <td><span style="background: #1e88e5; padding: 2px 8px; border-radius: 4px;">IPv6 直连</span></td>
+                    <td><span class="address">mc.dcx512.top</span></td>
+                    <td class="auto">自动 (25565)</td>
+                </tr>
+                <!-- Java 版 IPv4 -->
+                <tr>
+                    <td><span style="background: #fb8c00; padding: 2px 8px; border-radius: 4px;">IPv4 (FRP)</span></td>
+                    <td><span class="address">mcf.dcx512.top</span></td>
+                    <td class="auto">自动 (36673)</td>
+                </tr>
+
+                <!-- 基岩版 IPv6 -->
+                <tr>
+                    <td rowspan="2" style="font-weight: bold; color: #4db6ac;">🪨 基岩版</td>
+                    <td><span style="background: #1e88e5; padding: 2px 8px; border-radius: 4px;">IPv6 直连</span></td>
+                    <td><span class="address">mc.dcx512.top</span></td>
+                    <td class="auto">自动 (19132)</td>
+                </tr>
+                <!-- 基岩版 IPv4 -->
+                <tr>
+                    <td><span style="background: #fb8c00; padding: 2px 8px; border-radius: 4px;">IPv4 (FRP)</span></td>
+                    <td><span class="address">mcf.dcx512.top:23073</span></td>
+                    <td class="port-required">23073</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="footer-note">
+            📋 <strong>快速复制：</strong><br>
+            Java IPv6 / 基岩 IPv6：<code class="address">mc.dcx512.top</code><br>
+            Java IPv4：<code class="address">mcf.dcx512.top</code> | 基岩 IPv4：<code class="address">mcf.dcx512.top:23073</code><br><br>
+            ⚠️ 基岩版 IPv4 玩家请务必加上端口 <strong>:23073</strong>，否则无法连接。<br>
+            如不确定自己的网络类型，可访问 <a href="https://test-ipv6.com/" target="_blank">test-ipv6.com</a> 检测。
+        </div>
+    </div>
+</body>
+</html>
