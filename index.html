@@ -118,24 +118,55 @@
             if (!isMobile) return;
             var style = document.createElement('style');
             style.textContent =
-                'body { padding: 12px; align-items: flex-start; padding-top: 20px; }' +
-                '.container { padding: 24px 16px; border-radius: 14px; }' +
-                'h1 { font-size: 1.6rem; }' +
-                '.subtitle { font-size: 0.95rem; margin-bottom: 20px; }' +
-                '.note { padding: 12px 14px; font-size: 0.85rem; margin-bottom: 20px; }' +
-                'th, td { padding: 10px 12px; font-size: 0.85rem; white-space: nowrap; }' +
-                'th { font-size: 0.75rem; }' +
-                '.footer-note { font-size: 0.8rem; margin-top: 16px; }' +
-                '.address { font-size: 0.85rem; padding: 3px 8px; }' +
-                '.table-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; }';
+                'body { padding: 10px; align-items: flex-start; padding-top: 12px; }' +
+                '.container { padding: 20px 12px; border-radius: 12px; }' +
+                'h1 { font-size: 1.4rem; margin-bottom: 6px; }' +
+                '.subtitle { font-size: 0.9rem; margin-bottom: 16px; }' +
+                '.note { padding: 10px 12px; font-size: 0.82rem; margin-bottom: 16px; }' +
+                '.footer-note { font-size: 0.78rem; margin-top: 14px; }' +
+                '.address { font-size: 0.9rem; padding: 6px 10px; display: block; text-align: center; }' +
+                'table { display: none; }' +
+                '.card-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }' +
+                '.card { background: rgba(255,255,255,0.04); border-radius: 10px; padding: 14px; border: 1px solid rgba(255,255,255,0.06); }' +
+                '.card .card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }' +
+                '.card .card-ver { font-weight: bold; font-size: 0.9rem; }' +
+                '.card .card-net { font-size: 0.78rem; padding: 3px 8px; border-radius: 4px; }' +
+                '.card .card-addr { margin-bottom: 6px; }' +
+                '.card .card-port { font-size: 0.8rem; text-align: center; }' +
+                '.card .card-addr .address { font-size: 0.95rem; padding: 8px 10px; word-break: break-all; }';
             document.head.appendChild(style);
             var table = document.querySelector('table');
-            if (table) {
-                var wrapper = document.createElement('div');
-                wrapper.className = 'table-wrapper';
-                table.parentNode.insertBefore(wrapper, table);
-                wrapper.appendChild(table);
-            }
+            if (!table) return;
+            var rows = table.querySelectorAll('tbody tr');
+            var cardsHtml = '<div class="card-list">';
+            var rowsArr = Array.prototype.slice.call(rows);
+            var prevVer = '', prevColor = '';
+            rowsArr.forEach(function(tr) {
+                var cells = tr.querySelectorAll('td');
+                var verCell = tr.querySelector('td[rowspan]');
+                var curVer = verCell ? verCell.textContent.trim() : prevVer;
+                var curColor = verCell ? (verCell.style.color || '') : prevColor;
+                if (verCell) { prevVer = curVer; prevColor = curColor; }
+                var netType = cells[cells.length === 4 ? 0 : 0].innerHTML;
+                var addrCell = cells[cells.length === 4 ? 1 : 1];
+                var portCell = cells[cells.length === 4 ? 2 : 2];
+                var addrHtml = addrCell ? addrCell.innerHTML : '';
+                var portHtml = portCell ? portCell.textContent.trim() : '';
+                var netHtml = cells[0].innerHTML;
+                cardsHtml +=
+                    '<div class="card">' +
+                    '<div class="card-head">' +
+                    '<span class="card-ver" style="color:' + curColor + '">' + curVer + '</span>' +
+                    '<span class="card-net">' + netHtml + '</span>' +
+                    '</div>' +
+                    '<div class="card-addr">' + addrHtml + '</div>' +
+                    '<div class="card-port" style="color:' + (portCell && portCell.className === 'port-required' ? '#ffb74d' : '#66bb6a') + '">端口：' + portHtml + '</div>' +
+                    '</div>';
+            });
+            cardsHtml += '</div>';
+            var cardsDiv = document.createElement('div');
+            cardsDiv.innerHTML = cardsHtml;
+            table.parentNode.insertBefore(cardsDiv, table);
         })();
     </script>
 </head>
