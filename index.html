@@ -110,6 +110,88 @@
         .footer-note a:hover {
             text-decoration: underline;
         }
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+                align-items: flex-start;
+                padding-top: 20px;
+            }
+            .container {
+                padding: 24px 16px;
+                border-radius: 14px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 20px;
+            }
+            .note {
+                padding: 12px 14px;
+                font-size: 0.85rem;
+                margin-bottom: 20px;
+            }
+            th, td {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+                white-space: nowrap;
+            }
+            th {
+                font-size: 0.75rem;
+            }
+            .footer-note {
+                font-size: 0.8rem;
+                margin-top: 16px;
+            }
+            .address {
+                font-size: 0.85rem;
+                padding: 3px 8px;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+                padding-top: 12px;
+            }
+            .container {
+                padding: 18px 10px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.35rem;
+            }
+            .subtitle {
+                font-size: 0.85rem;
+                margin-bottom: 16px;
+            }
+            .note {
+                padding: 10px 12px;
+                font-size: 0.8rem;
+                margin-bottom: 16px;
+            }
+            th, td {
+                padding: 8px 8px;
+                font-size: 0.78rem;
+            }
+            th {
+                font-size: 0.7rem;
+                letter-spacing: 0.02em;
+            }
+            .footer-note {
+                font-size: 0.75rem;
+            }
+            .address {
+                font-size: 0.78rem;
+                padding: 2px 6px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -122,6 +204,7 @@
             您的设备如果支持 <strong>IPv6</strong>请通过直连获得更低延迟；如果仅支持 IPv4请通过 FRP 中转服务器连接。
         </div>
 
+        <div class="table-wrapper">
         <table>
             <thead>
                 <tr>
@@ -161,6 +244,7 @@
                 </tr>
             </tbody>
         </table>
+        </div>
 
         <div class="footer-note">
             📋 <strong>快速复制：</strong><br>
